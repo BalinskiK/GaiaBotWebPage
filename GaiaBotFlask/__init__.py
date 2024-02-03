@@ -5,7 +5,10 @@ def create_app():
     app.config['SECRET_KEY'] = 'asdifybasvkjeausdvbjsfv'
     
     from .views import views
+    from .controls import controls
 
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(controls, url_prefix='/')
+    
     
     return app
