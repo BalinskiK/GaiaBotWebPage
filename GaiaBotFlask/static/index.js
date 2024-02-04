@@ -31,7 +31,8 @@ class gaiaBotController {
         return new Promise(function(resolve,reject){
             self.domItems =  {
                 on : $("#on-button"),
-                off : $("#off-button")
+                off : $("#off-button"),
+                kill : $("#kill-button")
             }
 
             resolve(true)
@@ -44,12 +45,12 @@ class gaiaBotController {
         return new Promise(function(resolve, reject) {
             // Button 1
             self.domItems.on.on("click", async function() {
-                await self.turnOn();
+                await self.powerBotOn();
             });
 
             // Button 2
             self.domItems.off.on("click", async function() {
-                await self.turnOff();
+                await self.powerBotOff();
             });
 
             resolve(true);
@@ -65,13 +66,19 @@ class gaiaBotController {
      * Methods
     */
 
-    turnOffBot(){
+    powerBotOff(){
         let self = this;
         return new Promise(async function(resolve,reject){{
             try{
                 let result = await self.turnOff()
                 // Do something on success
                 console.log(result)
+
+                if (result === true){
+                    self.domItems.off.hide().promise().done(function(){
+                        self.domItems.on.show()
+                    })
+                }
 
             }catch(result){
                 // Do something on failure
@@ -80,12 +87,18 @@ class gaiaBotController {
         }})
     }
 
-    turnOnBot(){
+    powerBotOn(){
         let self = this;
         return new Promise(async function(resolve,reject){{
             try{
                 let result = await self.turnOn()
                 // Do something on success
+
+                if (result === true){
+                    self.domItems.on.hide().promise().done(function(){
+                        self.domItems.off.show()
+                    })
+                }
                 console.log(result)
             }catch(result){
                 // Do something on failure
