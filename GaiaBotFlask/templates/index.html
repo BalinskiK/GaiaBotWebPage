@@ -26,14 +26,16 @@
     />
     <script src="{{ url_for('static', filename='index.js') }}"></script>
     <style>
-        h1 {
-            font-family: 'Courier New', sans-serif;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            background-color: #e3c3c3;
-        }
+      h1,
+      h2 {
+        font-family: "Courier New", sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        background-color: #e3c3c3;
+        height: 100vh;
+      }
       .centered {
         display: flex;
         align-items: flex-start;
@@ -43,9 +45,12 @@
       }
       p {
         text-align: center;
+        margin-left: 100px;
+        margin-right: 100px;
       }
       body {
         background-color: "#e3c3c3";
+        height: 100vh;
       }
       .headers {
         display: flex;
@@ -58,13 +63,18 @@
         align-items: center;
         justify-content: space-between;
       }
+      .col {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
-    <div class="container" style="display: flex; flex-direction: column;">
+    <div class="container" style="display: flex; flex-direction: column">
       <div class="headbar">
         <img
-          src="./sdp-logo.jpeg"
+          src="{{url_for('static', filename='/Image/sdp-logo.jpeg')}}"
           alt="SDP Logo"
           style="
             width: 100px;
@@ -78,7 +88,7 @@
           <h2>Welcome</h2>
         </div>
         <img
-          src="./sdp-logo.jpeg"
+          src="{{url_for('static', filename='/Image/sdp-logo.jpeg')}}"
           alt="SDP Logo"
           style="
             width: 100px;
@@ -88,27 +98,46 @@
           "
         />
       </div>
-
-      <p>
-        Todo list : Start, Stop , Kill, .... , Decorate + animate, buttons
-        chanign colours + denail messages
-      </p>
       <p>
         This is a simple web interface to control the GaiaBot. You can turn it
         on and off using the buttons below.
       </p>
+      <p>The GaiaBot can be powered on using the "Start" button.</p>
+      <p>
+        GaiaBot will cease collection, deposit its basket and return to the charging port after
+        clicking the "Stop" button.
+      </p>
+      <p>
+        If you want to stop and power off the bot immediately, you can use the "Kill" button.
+      </p>
       <div class="centered">
-        <div class="row">
+        <div>
           <div class="col">
             <button type="button" id="on-button" class="btn btn-success me-2">
               Start
             </button>
-            <button type="button" id="off-button" class="btn btn-danger" style="display: none;">
+            <button
+              type="button"
+              id="off-button"
+              class="btn btn-danger me-2"
+              style="display: none"
+            >
               Stop
             </button>
             <button type="button" id="kill-button" class="btn btn-danger">
               Kill
+            </button>
           </div>
+          <!-- <img
+            src="{{url_for('static', filename='/Image/bot-design.jpg')}}"
+            alt="GaiaBot"
+            style="
+              width: 400px;
+              height: 300px;
+              margin: 10px;
+              align-self: center;
+            "
+          /> -->
         </div>
       </div>
     </div>
