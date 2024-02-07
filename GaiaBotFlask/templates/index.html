@@ -25,7 +25,8 @@
       crossorigin="anonymous"
     />
     <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}" />
+    <link rel="stylesheet" href="../static/styles/styles.css" />
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}" /> -->
   </head>
   <body>
     <div class="container">
@@ -65,13 +66,31 @@
       <div class="signup">
         <div class="info">
           <div class="largetext">GaiaBot Controls</div>
-          <div class="subtext">
-            This is a simple web interface to control the GaiaBot. You can turn
-            it on and off using the buttons below. The GaiaBot can be powered on
-            using the "Start" button. GaiaBot will cease collection, deposit its
-            basket and return to the charging port after clicking the "Return"
-            button. If you want to stop and power off the bot immediately, you
-            can use the "Off" button.
+          <div>
+            <div class="subtext">
+              This is a simple web interface to control the GaiaBot. You can
+              turn it on and off using the buttons below. The GaiaBot can be
+              powered on using the "Start" button. GaiaBot will cease
+              collection, deposit its basket and return to the charging port
+              after clicking the "Return" button. If you want to stop and power
+              off the bot immediately, you can use the "Off" button.
+            </div>
+            <div class="col">
+              <button type="button" id="on-button" class="btn btn-success me-2">
+                Start
+              </button>
+              <button
+                type="button"
+                id="off-button"
+                class="btn btn-danger me-2"
+                style="display: none"
+              >
+                Return
+              </button>
+              <button type="button" id="kill-button" class="btn btn-danger">
+                Off
+              </button>
+            </div>
           </div>
         </div>
         <div class="hero-image">
@@ -85,7 +104,17 @@
       </div>
       <div class="centered">
         <div>
-          <div class="col">
+          <!-- <img
+            src="{{url_for('static', filename='/Image/bot-design.jpg')}}"
+            alt="GaiaBot"
+            style="
+              width: 400px;
+              height: 300px;
+              margin: 10px;
+              align-self: center;
+            "
+          /> -->
+          <!-- <div class="col">
             <button type="button" id="on-button" class="btn btn-success me-2">
               Start
             </button>
@@ -100,17 +129,7 @@
             <button type="button" id="kill-button" class="btn btn-danger">
               Off
             </button>
-          </div>
-          <!-- <img
-            src="{{url_for('static', filename='/Image/bot-design.jpg')}}"
-            alt="GaiaBot"
-            style="
-              width: 400px;
-              height: 300px;
-              margin: 10px;
-              align-self: center;
-            "
-          /> -->
+          </div> -->
         </div>
       </div>
     </div>
