@@ -25,7 +25,7 @@
       crossorigin="anonymous"
     />
     <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}"/>
     <!-- <link rel="stylesheet" href="styles.css" /> -->
   </head>
   <body>
@@ -47,7 +47,7 @@
 
         <nav class="navbar">
           <div class="header-link">
-            <a href="index.html">Home</a>
+            <a href="/index">Home</a>
             <a href="">Contact</a>
             <a href="">FAQ</a>
             <a href="">Controls</a>
