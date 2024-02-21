@@ -14,4 +14,14 @@ def about():
 def contact():
     return render_template("contact.html")
 
+@views.route('/faq')
+def faq():
+    return render_template("faq.html")
+
+@views.route('/controls')
+def controls():
+    return render_template("controls.html")
+
+
+
     

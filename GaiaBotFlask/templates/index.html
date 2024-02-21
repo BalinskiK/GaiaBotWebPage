@@ -24,14 +24,14 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <!-- <link rel="stylesheet" href="../static/styles/styles.css" /> -->
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}" />
   </head>
   <body>
     <div class="container">
       <div class="headbar">
-        <div class="headers">
+        <a class="headers text-decoration-none" href="/">
           <img
             src="../static/Image/sdp-logo.jpeg"
             alt="SDP Logo"
@@ -43,7 +43,7 @@
             "
           />
           <h1>GaiaBot</h1>
-        </div>
+        </a>
         <!-- <img
           src="{{url_for('static', filename='/Image/sdp-logo.jpeg')}}"
           alt="SDP Logo"
@@ -58,8 +58,8 @@
           <div class="header-link">
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
-            <a href="">FAQ</a>
-            <a href="">Controls</a>
+            <a href="/faq">FAQ</a>
+            <a href="/controls">Controls</a>
           </div>
         </nav>
       </div>
