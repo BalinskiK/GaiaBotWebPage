@@ -2,3 +2,4 @@ Flask==3.0.1
 Flask-Login==0.6.3
 Flask-SQLAlchemy==3.1.1
 SQLAlchemy==2.0.25
+azure-iot-hub==2.6.1
