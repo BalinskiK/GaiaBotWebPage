@@ -32,7 +32,11 @@ class gaiaBotController {
             self.domItems =  {
                 on : $("#on-button"),
                 off : $("#off-button"),
-                kill : $("#kill-button")
+                kill : $("#kill-button"),
+                test:{
+                    on : $("#on-test-button"),
+                    off : $("#off-test-button"),
+                }
             }
 
             resolve(true)
@@ -51,6 +55,15 @@ class gaiaBotController {
             // Button 2
             self.domItems.off.on("click", async function() {
                 await self.powerBotOff();
+            });
+
+            self.domItems.test.on.on("click", async function() {
+                await self.turnOn();
+            });
+
+            // Button 2
+            self.domItems.test.off.on("click", async function() {
+                await self.turnOff();
             });
 
             resolve(true);

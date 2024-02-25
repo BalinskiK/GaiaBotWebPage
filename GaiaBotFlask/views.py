@@ -22,6 +22,11 @@ def faq():
 def controls():
     return render_template("controls.html")
 
+@views.route('/test')
+def test():
+    return render_template("test.html")
+
+
 
 
     

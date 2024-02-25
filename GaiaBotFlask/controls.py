@@ -12,6 +12,7 @@ def turnOff():
     
 @controls.route('/turn/on', methods=['GET'])
 def turnOn():
+    print("hit")
     result = controllerMethods.turnOn()
     print(result)
     return jsonify(result)
