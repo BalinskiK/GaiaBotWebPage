@@ -12,15 +12,30 @@ from azure.iot.device import IoTHubDeviceClient, MethodResponse
 # Do not modify
 # Connection string responsible for securing connection for azure iot c2d connection
 CONNECTION_STRING = "HostName=GaiaBot-rasberryPi.azure-devices.net;DeviceId=rasberryPi2024;SharedAccessKey=iBvdRg7UgMhgOb6fR/NUF1yYGXo1MVz8rAIoTMi0WKg="
+x = True
+on = False
+off = False
+executed = False
+returnBot = False
  
 # Client responsible for initialsing a opening on the device
 def create_client():
+    global executed
+    global x
+    global on
+    global off
+    global returnBot
     
     # Instantiate the client
     client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
     # Define the handler for method requests
     def method_request_handler(method_request):
+        global executed
+        global x
+        global on
+        global off
+        global returnBot
         if method_request.name == "StartDevice":
             # Act on the method by starting the device
             print("Starting Device")
@@ -33,11 +48,19 @@ def create_client():
             
             # This allows you to send back to the cloud without returning a payload - can be used for constant updates 
             # For now it sends back the current time to the cloud
+            
             #client.patch_twin_reported_properties(reported_props)
             #print( "Device twins updated with latest start time")
 
             # Create a method response indicating the method request was resolved
             # If the function was unsuccessfull return 500
+            
+            off = False;
+            on = True;
+            executed = False;
+            print(on)
+            
+            
             resp_status = 200
             
             # Payload has to be a json property
@@ -59,6 +82,11 @@ def create_client():
 
             # Create a method response indicating the method request was resolved
             # If the function was unsuccessfull set resp_status to 500
+            
+            off = True;
+            on = False;
+            executed = False;
+            
             resp_status = 200
             
             # Look above for on method to see info about payload
@@ -87,6 +115,12 @@ def create_client():
     return client
 
 def main():
+    global executed
+    global x
+    global on
+    global off
+    global returnBot
+    
     print ("Starting the Iot hub for the device")
     client = create_client()
 
@@ -94,8 +128,29 @@ def main():
     try:
         #This should be set to false when the device stops/loses connection
         # Wait for program exit
-        while True:
-            time.sleep(1000)
+        
+        
+        while x:
+            print("rep")
+            if(on):
+                print("in")
+                if(not executed):
+                    print(True)
+                    
+                    executed = True
+                    #Execute object detection
+            elif(off):        
+                if(not executed):
+                    executed = True
+                    x = False
+                    #Turn the whole system off
+            elif(returnBot):
+                if(not executed):
+                    executed = True
+                    #Return the bot back to base
+            
+            #Rate of refresh - cant be to short nor to long
+            time.sleep(1)
     except KeyboardInterrupt:
         print("IoTHubDeviceClient sample stopped")
     finally:
