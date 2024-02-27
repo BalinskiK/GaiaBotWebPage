@@ -1,3 +1,5 @@
+import threading
+import multiprocessing
 import time
 import datetime
 from azure.iot.device import IoTHubDeviceClient, MethodResponse
@@ -93,6 +95,8 @@ def create_client():
             resp_payload = {"Response": "This is the response from the device",
                             "Time": current_time}
             method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.shutdown()
+            
             
         # Add elif to continue expanding number of methods / for multiple methods switch to switch rather than if's
             
@@ -129,20 +133,48 @@ def main():
         #This should be set to false when the device stops/loses connection
         # Wait for program exit
         
+        main_loop_thread = threading.Thread(target=mainWhileLoop)
+        main_loop_thread.start()
+
+        # Wait for the main loop thread to finish (this won't happen in this example since the loop runs indefinitely)
+        main_loop_thread.join()
         
-        while x:
+        
+    except KeyboardInterrupt:
+        print("IoTHubDeviceClient sample stopped")
+    finally:
+        # Graceful exit
+        print("Shutting down IoT Hub Client")
+        client.shutdown()
+        
+def object_detection():
+    while True:
+        print("obj")
+        time.sleep(5)
+
+
+def mainWhileLoop():
+    global executed
+    global x
+    global on
+    global off
+    global returnBot
+    object_detection_thread = multiprocessing.Process(target=object_detection, args=())
+    
+    while x:
             print("rep")
             if(on):
                 print("in")
                 if(not executed):
                     print(True)
-                    
                     executed = True
-                    #Execute object detection
+                    object_detection_thread.start()                
+                    
             elif(off):        
                 if(not executed):
                     executed = True
                     x = False
+                    object_detection_thread.terminate()                
                     #Turn the whole system off
             elif(returnBot):
                 if(not executed):
@@ -151,12 +183,7 @@ def main():
             
             #Rate of refresh - cant be to short nor to long
             time.sleep(1)
-    except KeyboardInterrupt:
-        print("IoTHubDeviceClient sample stopped")
-    finally:
-        # Graceful exit
-        print("Shutting down IoT Hub Client")
-        client.shutdown()
+      
 
 if __name__ == '__main__':
     main()
