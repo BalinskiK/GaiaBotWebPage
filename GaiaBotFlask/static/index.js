@@ -30,6 +30,10 @@ class gaiaBotController {
 
         return new Promise(function(resolve,reject){
             self.domItems =  {
+                logTextarea : $("#log-text-area"),
+                duringRunTime : $("#during-run-time"),
+                connect : $("#connect-button"),
+                connectSection : $("#connect-section"),
                 on : $("#on-button"),
                 off : $("#off-button"),
                 kill : $("#kill-button"),
@@ -47,6 +51,11 @@ class gaiaBotController {
         let self = this;
         
         return new Promise(function(resolve, reject) {
+
+            self.domItems.connect.on("click", async function() {
+                await self.connect();
+            });
+
             // Button 1
             self.domItems.on.on("click", async function() {
                 await self.powerBotOn();
@@ -79,6 +88,22 @@ class gaiaBotController {
      * Methods
     */
 
+    connect(){
+        let self = this;
+        return new Promise(async function (resolve,reject) {
+
+            //call test connection 
+            //To implement
+
+            self.domItems.connect.hide().promise().done(function (){
+                self.domItems.on.show()
+            })
+
+            self.appendToOutputLog("Connected")
+
+          })
+    }
+
     powerBotOff(){
         let self = this;
         return new Promise(async function(resolve,reject){{
@@ -88,9 +113,12 @@ class gaiaBotController {
                 console.log(result)
 
                 if (result === true){
-                    self.domItems.off.hide().promise().done(function(){
+                    self.domItems.duringRunTime.hide().promise().done(function(){
                         self.domItems.on.show()
                     })
+
+
+                    self.appendToOutputLog("Powered Off")
                 }
 
             }catch(result){
@@ -105,12 +133,15 @@ class gaiaBotController {
         return new Promise(async function(resolve,reject){{
             try{
                 let result = await self.turnOn()
+            
                 // Do something on success
 
                 if (result === true){
                     self.domItems.on.hide().promise().done(function(){
-                        self.domItems.off.show()
+                        self.domItems.duringRunTime.show()
                     })
+
+                    self.appendToOutputLog("Powered On")
                 }
                 console.log(result)
             }catch(result){
@@ -120,7 +151,22 @@ class gaiaBotController {
         }})
     }
 
+    appendToOutputLog(content){
+        let self = this;
+        let logTextarea = self.domItems.logTextarea;
+         console.log("init", logTextarea.val())
 
+
+        if (logTextarea.val()){
+            //
+        } 
+        logTextarea.val(logTextarea.val() + content + '\n' + "        ");
+        console.log(logTextarea.val())
+
+
+        // Scroll to the bottom to show the latest content
+        logTextarea.scrollTop(logTextarea[0].scrollHeight);
+    }
 
     /*
      * END: Methods
@@ -179,5 +225,12 @@ class gaiaBotController {
 
 //Runs on start
 $(function(){
+    $(".nav .nav-item").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).addClass("active");
+     });
+
+     
     let controls = new gaiaBotController();
 })
+

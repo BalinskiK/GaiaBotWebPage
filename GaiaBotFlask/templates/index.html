@@ -1,136 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>GaiaBot</title>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-    <!-- <link rel="stylesheet" href="../static/styles/styles.css" /> -->
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="headbar">
-        <a class="headers text-decoration-none" href="/">
-          <img
-            src="../static/Image/sdp-logo.jpeg"
-            alt="SDP Logo"
-            style="
-              width: 100px;
-              height: 100px;
-              margin: 10px;
-              align-self: flex-end;
-            "
-          />
-          <h1>GaiaBot</h1>
-        </a>
-        <!-- <img
-          src="{{url_for('static', filename='/Image/sdp-logo.jpeg')}}"
-          alt="SDP Logo"
-          style="
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            align-self: flex-end;
-          "
-        /> -->
-        <nav class="navbar">
-          <div class="header-link">
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/faq">FAQ</a>
-            <a href="/controls">Controls</a>
-          </div>
-        </nav>
-      </div>
-      <div class="signup">
-          <div class="largetext">GaiaBot Controls</div>
-          <div>
-            <div class="subtext">
-              This is a simple web interface to control the GaiaBot. You can
-              turn it on and off using the buttons below. The GaiaBot can be
-              powered on using the "Start" button. GaiaBot will cease
-              collection, deposit its basket and return to the charging port
-              after clicking the "Return" button. If you want to stop and power
-              off the bot immediately, you can use the "Off" button.
-            </div>
-            <div class="col">
-              <button type="button" id="on-button" class="btn btn-success me-2">
-                Start
-              </button>
-              <button
-                type="button"
-                id="off-button"
-                class="btn btn-danger me-2"
-                style="display: none"
-              >
-                Return
-              </button>
-              <button type="button" id="kill-button" class="btn btn-danger">
-                Off
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img
-            src="../static/Image/bot-design.jpg"
-            alt="This is a placeholder for an image"
-            width="400px"
-            height="300px"
-          />
-        </div>
-      </div>
-      <div class="centered">
-        <div>
-          <!-- <img
-            src="{{url_for('static', filename='/Image/bot-design.jpg')}}"
-            alt="GaiaBot"
-            style="
-              width: 400px;
-              height: 300px;
-              margin: 10px;
-              align-self: center;
-            "
-          /> -->
-          <!-- <div class="col">
-            <button type="button" id="on-button" class="btn btn-success me-2">
-              Start
-            </button>
-            <button
-              type="button"
-              id="off-button"
-              class="btn btn-danger me-2"
-              style="display: none"
-            >
-              Return
-            </button>
-            <button type="button" id="kill-button" class="btn btn-danger">
-              Off
-            </button>
-          </div> -->
-        </div>
-      </div>
+{% extends "layout.html" %}
+{% block content %}
+
+ 
+<h2 class="mt-4">Welcome to GaiaBot</h2>
+<div class="row">
+  <div class="col-6">
+    <p>The gaiabot webpage acts as a universal central hub for all your action and worries.
+        Its key feature is the control hub that allows you to control your new gaiabot from anywhere in the world.
+        It also contains further information about our product and ways to get in touch for any questions or issues you may need answered.</p>
+    <a class="btn btn-primary btn-sm" href="/controls">Control hub</a>
+    <a  class="btn btn-secondary btn-sm" href="/about">Find out more</a>
+  </div>
+  <div class="col-6">
+    <div class="hero-image">
+      <img
+        src="../static/Image/bot-design.jpg"
+        alt="This is a placeholder for an image"
+        width="100%"
+        height="300px"
+      />
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+

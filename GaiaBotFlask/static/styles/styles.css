@@ -3,54 +3,12 @@ h2 {
   font-family: "Courier New", sans-serif;
   color: black;
 }
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-.centered {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-}
+
 body {
   height: 100vh;
   background-color: #e4c6c6;
-  flex-direction: column;
 }
-.headers {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-li {
-  float: left;
-}
-.headbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.col {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+
 .header-link a {
   text-decoration: none;
   font-size: 18px;
@@ -63,45 +21,56 @@ li {
   margin-left: auto;
   padding: 0px 0px 0px 0px;
 }
-.info{
-  display: flex;
-  flex-direction: column;
-}
-.navbar {
+
+.bg-nav-custom {
   display: flex;
   color: #f9faf8;
-}
-.text {
-  text-align: center;
-}
-.largetext {
-  font-size: 48px;
-  font-weight: bolder;
-  padding-bottom: 10px;
+  background-color: #e4c6c6;
 
 }
-.subtext {
-  font-size: 18px;
-  padding-right: 50px;
-  padding-bottom: 20px;
+
+.btn-red-pastel{
+  background-color: rgb(227, 106, 106);
+  color: white;
 }
-.signup{
-    display: flex;
-    justify-content: space-between;
+
+.btn-green-pastel{
+  background-color: rgb(67, 171, 101);
+  color: white;
+
 }
-.btn-success {
-  background-color: #a9b489;
-  border: none;
-  height: 80px;
-  width: 150px;
-  font-size: 25px;
-  border-radius: 40px;
+
+.btn-yellow-pastel{
+  background-color: #eb864c;
+  color: white;
+
 }
-.btn-danger {
-  background-color: #c65049;
-  width: 150px;
-  height: 80px;
-  border: none;
-  font-size: 25px;
-  border-radius: 40px
+
+.btn-blue-pastel{
+  background-color: rgb(106, 151, 227);
+  color: white;
+
+}
+
+.btn-red-pastel:active, .btn-red-pastel:hover  {
+  background-color: rgb(227, 106, 106);
+  color: white;
+}
+
+.btn-green-pastel:hover{
+  background-color: rgb(67, 171, 101);
+  color: white;
+
+}
+
+.btn-yellow-pastel:hover{
+  background-color: rgb(227, 207, 106);
+  color: white;
+
+}
+
+.btn-blue-pastel:hover{
+  background-color: rgb(106, 151, 227);
+  color: white;
+
 }
