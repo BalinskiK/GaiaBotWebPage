@@ -76,11 +76,11 @@ class gaiaBotController {
             });
 
             $("#on-test-button-maia").on("click", async function() {
-                await self.turnBaseOn();
+                await self.testBaseOn();
             });
 
             $("#off-test-button-maia").on("click", async function() {
-                await self.turnBaseOff();
+                await self.testBaseOff();
             });
 
             resolve(true);
@@ -186,7 +186,7 @@ class gaiaBotController {
     /*
      * END: Endpoints
     */
-    testBaseOn(variable1, variable2) {
+    testBaseOn() {
         let self = this;
         return new Promise(function(resolve, reject) {
             let uri = `../../../../../../turn/on/base`;
