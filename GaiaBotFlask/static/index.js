@@ -75,6 +75,14 @@ class gaiaBotController {
                 await self.turnOff();
             });
 
+            $("#on-test-button-maia").on("click", async function() {
+                await self.turnBaseOn();
+            });
+
+            $("#off-test-button-maia").on("click", async function() {
+                await self.turnBaseOff();
+            });
+
             resolve(true);
         });
     }
@@ -178,15 +186,21 @@ class gaiaBotController {
     /*
      * END: Endpoints
     */
-
-    testBaseOn(){
+    testBaseOn(variable1, variable2) {
         let self = this;
         return new Promise(function(resolve, reject) {
             let uri = `../../../../../../turn/on/base`;
+            let jsonData = {
+                variable1: $("#variable1").val(),
+                variable2: $("#variable2").val()
+            };
+            console.log(jsonData)
+    
             $.ajax({
-                type: 'GET', // Change type to 'GET'
+                type: 'POST', // Change type to 'POST'
                 url: uri,
                 contentType: 'application/json',
+                data: JSON.stringify(jsonData), // Send JSON data in the request body
                 success: function(result) {
                     resolve(result);
                 },
@@ -196,6 +210,7 @@ class gaiaBotController {
             });
         });
     }
+    
 
 
     testBaseOff(){
