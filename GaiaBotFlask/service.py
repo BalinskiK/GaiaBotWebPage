@@ -75,7 +75,7 @@ class controllerMethods:
     def testAndCreateConnection():
         return
     
-    def turnOnBase(int1, int2):
+    def turnOnBase(variable1, variable2):
         #call methods or change state to start the robot
         print ( "Starting the IoT Hub Service Client DeviceManagement Python sample..." )
         print ( "    Connection string = {0}".format(CONNECTION_STRING) )

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, jsonify
 from GaiaBotFlask.service import controllerMethods
+from flask import request
 
 controls = Blueprint('controls', __name__)
 
@@ -19,6 +20,7 @@ def turnOn():
 
 @controls.route('/turn/on/base', methods=['POST'])
 def turnOnBase():
+    print("hit")
     # Get JSON data from the request body
     json_data = request.json
     
@@ -28,6 +30,9 @@ def turnOnBase():
     # Extract variables from JSON data
     variable1 = json_data.get('variable1')
     variable2 = json_data.get('variable2')
+    
+    
+    print("variable1", variable1)
     result = controllerMethods.turnOnBase(variable1, variable2)
     print(result)
     return jsonify(result)
