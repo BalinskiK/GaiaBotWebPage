@@ -179,6 +179,43 @@ class gaiaBotController {
      * END: Endpoints
     */
 
+    testBaseOn(){
+        let self = this;
+        return new Promise(function(resolve, reject) {
+            let uri = `../../../../../../turn/on/base`;
+            $.ajax({
+                type: 'GET', // Change type to 'GET'
+                url: uri,
+                contentType: 'application/json',
+                success: function(result) {
+                    resolve(result);
+                },
+                error: function(result) {
+                    reject(result);
+                }
+            });
+        });
+    }
+
+
+    testBaseOff(){
+        let self = this;
+        return new Promise(function(resolve, reject) {
+            let uri = `../../../../../../turn/off/base`;
+            $.ajax({
+                type: 'GET', // Change type to 'GET'
+                url: uri,
+                contentType: 'application/json',
+                success: function(result) {
+                    resolve(result);
+                },
+                error: function(result) {
+                    reject(result);
+                }
+            });
+        });
+    }
+
     turnOff() {
         let self = this;
         return new Promise(function(resolve, reject) {

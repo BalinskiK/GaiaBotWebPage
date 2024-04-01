@@ -74,7 +74,38 @@ class controllerMethods:
     
     def testAndCreateConnection():
         return
+    
+    def turnOnBase(int1, int2):
+        #call methods or change state to start the robot
+        print ( "Starting the IoT Hub Service Client DeviceManagement Python sample..." )
+        print ( "    Connection string = {0}".format(CONNECTION_STRING) )
+        print ( "    Device ID         = {0}".format(DEVICE_ID) )
         
+        METHOD_NAME = "StartBase"
+        METHOD_PAYLOAD = "{\"variable1\":\"" + str(variable1) + "\", \"variable2\":\"" + str(variable2) + "\"}"
+        TIMEOUT = 60
+        WAIT_COUNT = 10
+        
+        iothub_devicemethod_sample_run(METHOD_NAME, METHOD_PAYLOAD, TIMEOUT, WAIT_COUNT)
+
+
+        return True
+
+    def turnOffBase():
+        #call methods or change state to start the robot
+        print ( "Starting the IoT Hub Service Client DeviceManagement Python sample..." )
+        print ( "    Connection string = {0}".format(CONNECTION_STRING) )
+        print ( "    Device ID         = {0}".format(DEVICE_ID) )
+        
+        METHOD_NAME = "StopBase"
+        METHOD_PAYLOAD = "{\"method_number\":\"42\"}"
+        TIMEOUT = 60
+        WAIT_COUNT = 10
+        
+        iothub_devicemethod_sample_run(METHOD_NAME, METHOD_PAYLOAD, TIMEOUT, WAIT_COUNT)
+
+
+        return True    
     
     def turnOn():
         #call methods or change state to start the robot

@@ -16,3 +16,27 @@ def turnOn():
     result = controllerMethods.turnOn()
     print(result)
     return jsonify(result)
+
+@controls.route('/turn/on/base', methods=['POST'])
+def turnOnBase():
+    # Get JSON data from the request body
+    json_data = request.json
+    
+    if not json_data:
+        return jsonify({'error': 'No JSON data provided'}), 400
+    
+    # Extract variables from JSON data
+    variable1 = json_data.get('variable1')
+    variable2 = json_data.get('variable2')
+    result = controllerMethods.turnOnBase(variable1, variable2)
+    print(result)
+    return jsonify(result)
+
+
+@controls.route('/turn/off/base', methods=['GET'])
+def turnOffBase():
+    # Get JSON data from the request body
+
+    result = controllerMethods.turnOffBase()
+    print(result)
+    return jsonify(result)
