@@ -83,6 +83,10 @@ class gaiaBotController {
                 await self.testBaseOff();
             });
 
+            $("#start-arm-on").on("click", async function() {
+                await self.startArm();
+            });
+
             resolve(true);
         });
     }
@@ -268,6 +272,25 @@ class gaiaBotController {
         });
     }
     
+
+    startArm() {
+        let self = this;
+        return new Promise(function(resolve, reject) {
+            let uri = `../../../../../../start/arm`;
+            $.ajax({
+                type: 'GET', // Change type to 'GET'
+                url: uri,
+                contentType: 'application/json',
+                success: function(result) {
+                    // Will return a code
+                    resolve(result);
+                },
+                error: function(result) {
+                    reject(result);
+                }
+            });
+        });
+    }
 
     /*
      * END: Endpoints

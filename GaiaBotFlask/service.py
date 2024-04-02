@@ -123,6 +123,22 @@ class controllerMethods:
 
         return True
     
+    def startArm():
+        #call methods or change state to start the robot
+        print ( "Starting the IoT Hub Service Client DeviceManagement Python sample..." )
+        print ( "    Connection string = {0}".format(CONNECTION_STRING) )
+        print ( "    Device ID         = {0}".format(DEVICE_ID) )
+        
+        METHOD_NAME = "StartArm"
+        METHOD_PAYLOAD = "{\"method_number\":\"42\"}"
+        TIMEOUT = 60
+        WAIT_COUNT = 10
+        
+        iothub_devicemethod_sample_run(METHOD_NAME, METHOD_PAYLOAD, TIMEOUT, WAIT_COUNT)
+
+
+        return True
+    
     def turnOff():
         #call methods or change state to stop the robot - either kill or stop
         METHOD_NAME = "StopDevice"

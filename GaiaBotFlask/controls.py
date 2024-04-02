@@ -18,6 +18,13 @@ def turnOn():
     print(result)
     return jsonify(result)
 
+@controls.route('/start/arm', methods=['GET'])
+def startArm():
+    print("hit")
+    result = controllerMethods.startArm()
+    print(result)
+    return jsonify(result)
+
 @controls.route('/turn/on/base', methods=['POST'])
 def turnOnBase():
     print("hit")

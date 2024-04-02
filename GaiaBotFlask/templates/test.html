@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}" />
   </head>
   <body>
-    <div class="container">
+    <div class="row">
+    <div class="container col">
               <button type="button" id="on-test-button" class="btn btn-success me-2">
                 Start
               </button>
@@ -44,7 +45,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container col">
       <p>Test for Maia Down Below</p>
 
       <label for="variable1">Variable 1:</label>
@@ -63,6 +64,13 @@
       >
         Stop
       </button>
+</div>
+
+<div class="col">
+  <button type="button" id="start-arm-on" class="btn btn-success me-2">
+    Start arm
+  </button>
+</div>
 </div>
   </body>
 </html>
