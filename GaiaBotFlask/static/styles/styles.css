@@ -1,19 +1,66 @@
 h1,
 h2 {
-  font-family: "Courier New", sans-serif;
   color: black;
 }
 
+
+
 body {
   height: 100vh;
-  background-color: #e4c6c6;
+  /*background-color: #e4c6c6;*/
+  background-color: #f7dbe2;
+
+}
+
+.hero-image img {
+  border-radius: 15px; /* Adjust the value to change the roundness */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Assuming you want to remove underlines */
+}
+
+.logo-text {
+  margin-left: 10px; /* Adjust as needed */
+  font-size: 18px; /* Adjust as needed */
+  color: black; /* Change to the desired color */
+}
+
+.btn-primary2 {
+  border-radius: 20px; /* Adjust the value to control the roundness */
+  background-color: white; /* Transparent background */
+  color: black; /* Text color */
+  border: 2px solid white; /* White border */
+  padding: 8px 20px; /* Adjust padding as needed */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.btn-primary2:hover {
+  background-color: white; /* Transparent background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+}
+
+
+.btn-secondary2 {
+  border-radius: 20px; /* Adjust the value to control the roundness */
+  background-color: white; /* Transparent background */
+  color: black; /* Text color */
+  border: 2px solid white; /* White border */
+  padding: 8px 30px; /* Adjust padding as needed */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.btn-secondary2:hover {
+  background-color: white; /* Transparent background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
 }
 
 .header-link a {
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
-  font-family: "Roboto", arial;
   color: grey;
 }
 .header-link {
@@ -25,8 +72,9 @@ body {
 .bg-nav-custom {
   display: flex;
   color: #f9faf8;
-  /*background-color: #e4c6c6;*/
-
+  background-color: white;
+  border-bottom: 2px solid transparent; /* Transparent border */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
 .btn-red-pastel{
